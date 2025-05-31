@@ -31,8 +31,8 @@ print(f"R2 Score: {r2:.2f}")
 task.connect(parameters)
 task.get_logger().report_scalar("R2 Score", "score", value=r2,iteration=0)
 task.get_logger().report_scalar("Accuracy", "score", value=accuacy,iteration=0)
-with open("trained_model/xgboost_model.pkl", "rb") as f:
-        task.upload_artifact(name="model", artifact_object=f.read())
+#with open("trained_model/xgboost_model.pkl", "rb") as f:
+task.upload_artifact(name="model", artifact_object="trained_model/xgboost_model.pkl")
         
 #params = ppm.model.get_xgb_params()
 #print(f"Parameters: {params}")
