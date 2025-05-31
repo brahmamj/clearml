@@ -5,7 +5,7 @@ from sklearn.metrics import r2_score,accuracy_score
 #from mlflow.models import infer_signature
 from clearml import Task
 # Initialize ClearML task
-task = Task.init(project_name="Patient Survival Prediction", task_name="Train and Save Model", task_type=Task.TaskTypes.optimizer)
+task = Task.init(project_name="Patient Survival Prediction", task_name="Patient_Survival_prediction_train_test", task_type=Task.TaskTypes.optimizer)
 
 parameters = {"n_estimators":200, 
               "max_depth":4, 
