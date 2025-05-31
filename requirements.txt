@@ -8,3 +8,4 @@ requests>=2.23.0,<2.24.0
 pydantic
 pydantic-settings
 prometheus-fastapi-instrumentator
+clearml
