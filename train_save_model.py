@@ -4,6 +4,7 @@ from sklearn.metrics import r2_score,accuracy_score
 #import mlflow
 #from mlflow.models import infer_signature
 from clearml import Task
+from clearml import Dataset
 # Initialize ClearML task
 task = Task.init(project_name="Patient Survival Prediction", task_name="Patient_Survival_prediction_train_test", task_type=Task.TaskTypes.optimizer)
 
@@ -12,7 +13,13 @@ parameters = {"n_estimators":200,
               "max_leaves":5, 
               "random_state":42
             }
-ppm = PatientPredictionModel("dataset/heart_failure_clinical_records_dataset.csv", "trained_model/xgboost_model.pkl",parameters)
+
+
+dataset = Dataset.get(dataset_project="Patient survival prediction", dataset_name="patient_dataset")
+local_path = dataset.get_local_copy()
+
+
+ppm = PatientPredictionModel(local_path+"/heart_failure_clinical_records_dataset.csv", "trained_model/xgboost_model.pkl",parameters)
 
 X, y = ppm.load_data()
 ppm.split_data(X, y)
