@@ -27,7 +27,7 @@ ppm.train_model()
 ppm.evaluate_model()
 ppm.save_model()
 
-data = pd.read_csv("dataset/heart_failure_clinical_records_dataset.csv")
+data = pd.read_csv(local_path+"/heart_failure_clinical_records_dataset.csv")
 data = data.sample(100)
 data_feat = data.drop('DEATH_EVENT', axis=1)
 data_target = data['DEATH_EVENT'].values
